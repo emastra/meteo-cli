@@ -13,8 +13,8 @@ module.exports = async (args) => {
 
     spinner.stop();
 
-    console.log(`Current conditions in ${geoData.address}:`);
-    console.log(`\t${weatherData.today.temperature}°F ${weatherData.today.summary}`);
+    console.log(`\nCurrent conditions in ${geoData.address}:`);
+    console.log(`\t${weatherData.today.temperature}°F ${weatherData.today.summary}\n`);
   } catch (err) {
     spinner.stop();
 

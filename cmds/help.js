@@ -15,10 +15,11 @@ const menus = {
   `,
 
   forecast: `
-    outside forecast <options>
+    meteo forecast <options>
 
     --location, -l .....: the location to use
   `,
+
 };
 
 module.exports = (args) => {

@@ -10,6 +10,8 @@ module.exports = async () => {
     });
 
     const { city, region } = results.data;
+    if (!city) throw new Error('Unable to identify your location');
+
     return `${city}, ${region}`;
   } catch(err) {
     throw new Error(err);

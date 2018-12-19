@@ -8,11 +8,11 @@ module.exports = () => {
   // select the main command
   let cmd = args._[0];
 
-  // if version and help flags are true set the cmd
+  // if version and help flags are true set the cmd // shortcuts
   if (args.version || args.v) {
     cmd = 'version'
   }
-  if (args.help || args.h) {
+  if (args.help || args.h || !cmd) {
     cmd = 'help'
   }
 
