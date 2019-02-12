@@ -8,8 +8,6 @@ const minimist = require('minimist');
 const error = require('./utils/error');
 
 module.exports = () => {
-  // select all elements from pos 2 to the end
-  // the first arg will always be the interpreter followed by the name of the file being interpreted.
   const args = minimist(process.argv.slice(2));
   // select the main command
   let cmd = args._[0];
@@ -23,7 +21,7 @@ module.exports = () => {
   }
 
   // each case export a function (passing along the args to use them later).
-  // in this way, we split up the code for each command and only load it into memory when it is called.
+  // split up the code for each command and load it into memory only when it is called.
   switch (cmd) {
     case 'today':
       require('./cmds/today')(args);

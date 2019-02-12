@@ -4,24 +4,6 @@ const axios = require('axios');
 // darksky api key
 const key = '28b9466934ef76164e49e9b510f5bb02';
 
-// const getWeather = (lat, lng) => {
-//   return new Promise((resolve, reject) => {
-//     return axios({
-//       method: 'get',
-//       url: `https://api.darksky.net/forecast/${key}/${lat},${lng}`
-//     }).then((results) => {
-//       const data = {
-//         temperature: results.data.currently.temperature,
-//         summary: results.data.currently.summary
-//       };
-//
-//       resolve(data);
-//     }).catch((err) => {
-//       reject(err);
-//     });
-//   });
-// };
-
 const getWeather = async (lat, lng) => {
   try {
     const results = await axios({
