@@ -2,23 +2,8 @@ const ora = require('ora');
 const getWeather = require('../utils/weather');
 const getIpLocation = require('../utils/ipLocation');
 const getGeoLocation = require('../utils/geoLocation');
-
-// helpers
-const formatDate = (timestamp) => {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'];
-  const d = new Date(timestamp * 1000);
-
-  const day = d.getDate();
-  const month = months[d.getMonth()];
-  const year = d.getFullYear();
-
-  return `${day} ${month} ${year}`;
-}
-
-const toCelsius = (fahrenheit) => {
-  return Math.round((5/9) * (fahrenheit-32));
-}
-
+const toCelsius = require('../utils/convertToCelsius');
+const formatDate = require('../utils/formatDate');
 
 module.exports = async (args) => {
   const spinner = ora().start()
@@ -34,10 +19,10 @@ module.exports = async (args) => {
     console.log(`\tWeek summary - ${weatherData.forecast.summary}`);
     weatherData.forecast.week.forEach(day => {
       let date = formatDate(day.time);
-      console.log(`\t${date} - Low: ${toCelsius(day.temperatureLow)}° | High: ${toCelsius(day.temperatureHigh)}° | ${day.summary}`);
+      console.log(`\t${date} - Low: ${toCelsius(day.temperatureLow)}°C | High: ${toCelsius(day.temperatureHigh)}°C | ${day.summary}`);
     });
     console.log();
-    
+
   } catch (err) {
     spinner.stop()
 

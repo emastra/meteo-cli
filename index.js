@@ -1,3 +1,9 @@
+/**************
+
+bin/meteo help
+
+**************/
+
 const minimist = require('minimist');
 const error = require('./utils/error');
 

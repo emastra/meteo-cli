@@ -2,6 +2,7 @@ const ora = require('ora');
 const getWeather = require('../utils/weather');
 const getIpLocation = require('../utils/ipLocation');
 const getGeoLocation = require('../utils/geoLocation');
+const toCelsius = require('../utils/convertToCelsius');
 
 module.exports = async (args) => {
   const spinner = ora().start();
@@ -14,7 +15,7 @@ module.exports = async (args) => {
     spinner.stop();
 
     console.log(`\nCurrent conditions in ${geoData.address}:`);
-    console.log(`\t${weatherData.today.temperature}°F ${weatherData.today.summary}\n`);
+    console.log(`\t${toCelsius(weatherData.today.temperature)}°C ${weatherData.today.summary}\n`);
   } catch (err) {
     spinner.stop();
 
